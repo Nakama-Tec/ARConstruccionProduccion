@@ -40,11 +40,11 @@ app.use("/", express.static("dist", {redirect: false}), alquilerDepartamentos,ca
 
 
 //seguridad https
-const options = {
-    origin: ["htpp://147.93.66.212", "htpps://147.93.66.212"]
-}
+//const options = {
+//    origin: ["htpp://147.93.66.212", "htpps://147.93.66.212"]
+//}
 
-app.use(cors(options));
+//app.use(cors(options));
 
 //cargar el index del front
 
