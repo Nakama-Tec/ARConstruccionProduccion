@@ -1,5 +1,5 @@
 const express = require('express'); 
-const {conection} = require('./DB/Config')
+const {conection} = require('./testDB')
 const alquilerDepartamentos = require("./Routes/alquilerDepartamentos")
 const cashFlow = require("./Routes/cashFlow")
 const certificados = require("./Routes/certificados")
