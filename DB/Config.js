@@ -16,3 +16,10 @@ connection.connect((err) => {
     }
     console.log('✅ Conectado a MySQL en la VPS');
 });
+
+console.log('Variables de entorno:', {
+    HOST: process.env.HOST,
+    USER: process.env.USER,
+    PASSWORD: process.env.PASSWORD,
+    DATABASE: process.env.DATABASE,
+});
