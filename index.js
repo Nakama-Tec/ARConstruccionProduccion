@@ -72,31 +72,3 @@ app.listen(port, () => {
 })
 
 
-
-
-
-
-
-
-
-app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-    console.log('Email recibido:', email);  // Mostrar el email recibido
-    console.log('Contraseña recibida:', password);  // Mostrar la contraseña recibida
-    try {
-        const [rows] = await db.execute(
-            'SELECT * FROM Usuarios WHERE nombreUsuario = ? AND passwordUsuario = ?',
-            [email, password]
-        );
-        
-        if (rows.length > 0) {
-            res.json({ success: true, user: rows[0] });
-        } else {
-            res.status(401).json({ success: false, message: 'Usuario o contraseña incorrectos' });
-        }
-    } catch (error) {
-        console.error('Error en la consulta de login:', error);
-        res.status(500).json({ success: false, message: 'Error interno del servidor' });
-    }
-});
-
