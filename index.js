@@ -39,14 +39,14 @@ app.use(express.json())
 app.use("/", express.static("dist", {redirect: false}), alquilerDepartamentos,cashFlow,certificados,clientes,compraMateriales,departamentos,detallesViajes,libroDiario,obras,operaciones,pagosAlquileres,remuneraciones,stockMateriales,terrenos,usuarios,vehiculos,ventaTerrenos,viajes,login,contactos,pendientes,empleados,recuperarPass);
 
 
-//seguridad https
-//const options = {
-//    origin: ["htpp://147.93.66.212", "htpps://147.93.66.212"]
-//}
+seguridad https
+const options = {
+    origin: ["htpp://147.93.66.212", "htpps://147.93.66.212"]
+}
 
-//app.use(cors(options));
+app.use(cors(options));
 
-//cargar el index del front
+cargar el index del front
 
 app.get('*', (req, res, next) => { 
     return res.sendFile(path.resolve('dist/index.html'));
@@ -71,4 +71,11 @@ app.listen(port, () => {
     console.log(`🔝 Escuchando en el puerto ${port}\n 🔹 Ingresar: http://localhost:${port}/`)
 })
 
+
+
+
+
+const { v4: uuidv4 } = require('uuid');
+const id = uuidv4();
+console.log('UUID generado:', id);
 
