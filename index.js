@@ -70,3 +70,37 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`🔝 Escuchando en el puerto ${port}\n 🔹 Ingresar: http://localhost:${port}/`)
 })
+
+
+
+
+
+
+
+
+
+
+app.use(express.json()); // Asegúrate de que Express pueda leer JSON
+
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    // Conexión a la base de datos
+    const connection = require('./database'); // Asegúrate de importar correctamente la conexión
+
+    try {
+        const [rows] = await connection.execute(
+            'SELECT * FROM Usuarios WHERE nombreUsuario = ? AND passwordUsuario = ?',
+            [email, password]
+        );
+
+        if (rows.length > 0) {
+            res.json({ success: true, user: rows[0] });
+        } else {
+            res.status(401).json({ success: false, message: 'Usuario o contraseña incorrectos' });
+        }
+    } catch (error) {
+        console.error('Error en la consulta de login:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    }
+});
