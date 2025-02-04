@@ -1,27 +1,26 @@
-require('dotenv').config();
-
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'http://147.93.66.212',
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-});
-
-console.log('Variables de entorno:', {
-    HOST: process.env.HOST,
-    USER: process.env.USER,
-    PASSWORD: process.env.PASSWORD,
-    DATABASE: process.env.DATABASE,
+    user: 'root', // O el usuario que creaste
+    password: 'NakamaConstruccion', // O la contraseña del usuario
+    database: 'DB_Construcciones3'
 });
 
 connection.connect((err) => {
     if (err) {
-        console.error('❌ Error al conectar a MySQL:', err);
+        console.error('Error conectando a la base de datos:', err);
         return;
     }
-    console.log('✅ Conectado a MySQL en la VPS');
+    console.log('✅ Conexión exitosa a la base de datos');
+
+    // Prueba una consulta
+    connection.query('SHOW TABLES', (err, results) => {
+        if (err) {
+            console.error('Error ejecutando la consulta:', err);
+        } else {
+            console.log('Tablas en la base de datos:', results);
+        }
+        connection.end();
+    });
 });
-
-
