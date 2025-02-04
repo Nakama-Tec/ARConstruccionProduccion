@@ -32,7 +32,7 @@ const path = require('path');
 
 
 const app = express()
-const port = 8000;
+const port = 5000;
 app.use(cors({origin: '*', allowedHeaders: ["Authorization", "Content-Type"],credentials: true}))
 app.use(bodyParser.json()); 
 app.use(express.json())
