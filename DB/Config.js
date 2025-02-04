@@ -9,6 +9,13 @@ const connection = mysql.createConnection({
     database: process.env.DATABASE,
 });
 
+console.log('Variables de entorno:', {
+    HOST: process.env.HOST,
+    USER: process.env.USER,
+    PASSWORD: process.env.PASSWORD,
+    DATABASE: process.env.DATABASE,
+});
+
 connection.connect((err) => {
     if (err) {
         console.error('❌ Error al conectar a MySQL:', err);
@@ -17,9 +24,4 @@ connection.connect((err) => {
     console.log('✅ Conectado a MySQL en la VPS');
 });
 
-console.log('Variables de entorno:', {
-    HOST: process.env.HOST,
-    USER: process.env.USER,
-    PASSWORD: process.env.PASSWORD,
-    DATABASE: process.env.DATABASE,
-});
+
