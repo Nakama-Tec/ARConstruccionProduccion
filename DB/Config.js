@@ -8,7 +8,7 @@ const conection = mysql.createConnection({
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
-    //port: 3306 //puerto mysql 
+    port: 3306 //puerto mysql 
 
 //     waitForConnections: true,
 //     connectionLimit: 10,
