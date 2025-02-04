@@ -79,21 +79,16 @@ app.listen(port, () => {
 
 
 
-
-app.use(express.json()); // Asegúrate de que Express pueda leer JSON
-
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
-
-    // Conexión a la base de datos
-    const connection = require('./database'); // Asegúrate de importar correctamente la conexión
-
+    console.log('Email recibido:', email);  // Mostrar el email recibido
+    console.log('Contraseña recibida:', password);  // Mostrar la contraseña recibida
     try {
-        const [rows] = await connection.execute(
+        const [rows] = await db.execute(
             'SELECT * FROM Usuarios WHERE nombreUsuario = ? AND passwordUsuario = ?',
             [email, password]
         );
-
+        
         if (rows.length > 0) {
             res.json({ success: true, user: rows[0] });
         } else {
@@ -104,3 +99,4 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error interno del servidor' });
     }
 });
+
