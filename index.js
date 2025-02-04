@@ -71,11 +71,3 @@ app.listen(port, () => {
     console.log(`🔝 Escuchando en el puerto ${port}\n 🔹 Ingresar: http://localhost:${port}/`)
 })
 
-
-
-
-
-const { v4: uuidv4 } = require('uuid');
-const id = uuidv4();
-console.log('UUID generado:', id);
-
