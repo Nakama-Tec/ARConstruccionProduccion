@@ -38,15 +38,7 @@ app.use(bodyParser.json());
 app.use(express.json())
 app.use("/", express.static("dist", {redirect: false}), alquilerDepartamentos,cashFlow,certificados,clientes,compraMateriales,departamentos,detallesViajes,libroDiario,obras,operaciones,pagosAlquileres,remuneraciones,stockMateriales,terrenos,usuarios,vehiculos,ventaTerrenos,viajes,login,contactos,pendientes,empleados,recuperarPass);
 
-
-//seguridad https
-//const options = {
-//    origin: ["htpp://147.93.66.212", "htpps://147.93.66.212"]
-//}
-
-//app.use(cors(options));
-
-cargar el index del front
+//cargar el index del front
 
 app.get('*', (req, res, next) => { 
     return res.sendFile(path.resolve('dist/index.html'));
@@ -70,4 +62,5 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`🔝 Escuchando en el puerto ${port}\n 🔹 Ingresar: http://localhost:${port}/`)
 })
+
 
