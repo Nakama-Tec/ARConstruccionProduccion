@@ -1,4 +1,4 @@
-const { conection } = require("../DB/Config");
+const { conection } = require("./testDB");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken"); // importo la libreria jwt
 dotenv.config()
