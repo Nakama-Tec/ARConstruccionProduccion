@@ -1,16 +1,19 @@
-// testDB.js
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
-// Crear la conexión con MySQL
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',               // Usuario de la base de datos
-    password: 'NakamaConstruccion',  // Contraseña del usuario 
-    database: 'DB_Construcciones3'  // Nombre de la base de datos
+    host: process.env.HOST || 'localhost',
+    user: process.env.USER || 'root',
+    password: process.env.PASSWORD || 'Nakamatec996@',
+    database: process.env.DATABASE || 'DB_Construcciones3'
 });
 
-// Exportar la conexión para usarla en otros archivos
-module.exports = {
-    connection: connection
-};
+connection.connect((error) => {
+    if (error) {
+        console.error('Error al conectar a la base de datos:', error);
+        return;
+    }
+    console.log('Conexión exitosa a la base de datos');
+});
+
+module.exports = connection; // Exporta la conexión
 
