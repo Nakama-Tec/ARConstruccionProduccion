@@ -1,5 +1,5 @@
 // testDB.js
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // Crear la conexión con MySQL
 const connection = mysql.createConnection({
