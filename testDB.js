@@ -1,19 +1,27 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: process.env.HOST || 'localhost',
-    user: process.env.USER || 'root',
-    password: process.env.PASSWORD || 'Nakamatec996@',
-    database: process.env.DATABASE || 'DB_Construcciones3'
+    host: 'localhost',
+    user: 'root', // O el usuario que creaste
+    password: 'NakamaConstruccion', // O la contraseña del usuario
+    database: 'DB_Construcciones3'
 });
 
-connection.connect((error) => {
-    if (error) {
-        console.error('Error al conectar a la base de datos:', error);
+connection.connect((err) => {
+    if (err) {
+        console.error('Error conectando a la base de datos:', err);
         return;
     }
-    console.log('Conexión exitosa a la base de datos');
-});
+    console.log('✅ Conexión exitosa a la base de datos');
 
-module.exports = connection; // Exporta la conexión
+    // Prueba una consulta
+    connection.query('SHOW TABLES', (err, results) => {
+        if (err) {
+            console.error('Error ejecutando la consulta:', err);
+        } else {
+            console.log('Tablas en la base de datos:', results);
+        }
+        connection.end();
+    });
+});
 
