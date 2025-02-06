@@ -45,6 +45,7 @@ app.get('*', (req, res, next) => {
 });
 
 // conectar con MySQL
+console.log(conection);  // Esto te ayudará a ver si la conexión está definida correctamente
 conection.connect((error) => {
     if (error) {
         console.error("Error conectando a MySQL:", error);
