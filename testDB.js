@@ -1,26 +1,16 @@
+// testDB.js
 const mysql = require('mysql');
 
+// Crear la conexión con MySQL
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root', // O el usuario que creaste
-    password: 'NakamaConstruccion', // O la contraseña del usuario
-    database: 'DB_Construcciones3'
+    user: 'root',               // Usuario de la base de datos
+    password: 'NakamaConstruccion',  // Contraseña del usuario
+    database: 'DB_Construcciones3'  // Nombre de la base de datos
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error conectando a la base de datos:', err);
-        return;
-    }
-    console.log('✅ Conexión exitosa a la base de datos');
+// Exportar la conexión para usarla en otros archivos
+module.exports = {
+    conection: connection
+};
 
-    // Prueba una consulta
-    connection.query('SHOW TABLES', (err, results) => {
-        if (err) {
-            console.error('Error ejecutando la consulta:', err);
-        } else {
-            console.log('Tablas en la base de datos:', results);
-        }
-        connection.end();
-    });
-});
