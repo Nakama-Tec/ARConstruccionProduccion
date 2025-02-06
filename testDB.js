@@ -11,6 +11,6 @@ const connection = mysql.createConnection({
 
 // Exportar la conexión para usarla en otros archivos
 module.exports = {
-    conection: connection
+    connection: connection
 };
 
